@@ -1,6 +1,6 @@
 This lecture will also explore the Cardano Testnet
 1)Script Context
-data ScriptContext:- have to constractors
+data ScriptContext:- have two constractors
   1)ScriptContextTxInfo :: TxInfo
                  TxInfo constractors :- 
                  A pending transaction. This is the view as seen by validator scripts,
