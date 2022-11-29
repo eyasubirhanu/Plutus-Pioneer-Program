@@ -24,6 +24,7 @@ for other string-like types. One example is the Byte string type.
 
 Gift.hs example
 on-chain part
+
 4-main functions
 1) mkvalidator function:- define validation logic(make validator script).
 2) validator function:- complie mkvalidator haskell function to plutus core.
@@ -33,8 +34,20 @@ on-chain part
 4) scrAddress function:- store the address of script.
 
 off-chain part
-
 1) GiftSchema :- give and grap endpoints
 2) give function :- give using valhash function => mustPayToOtherScript valHash() $ Ada.lovelaceValueOf amount 
 4) grap function :- grap using scrAddress function => utxos <- utxosAt scrAddress
 5) endpoints function :- using GiftSchema give take input but not for grap 
+
+In Burn.hs validator always fall 
+
+## High Level Typed Validation Scripts
+
+We first declare DatumType as type unit () and RedeemerType as an Integer.
+
+additional function typedValidator have Scripts.mkTypedValidator @Typed
+We then add a wrap function to be able to translate the strong types from the low level version. 
+It is then declared in the where, that the datum and redeemer is of type () and Integer respectively.
+
+redeemer will check to see if the integer amount is 42, 
+otherwise it will return false, outputting “wrong redeemer”.
