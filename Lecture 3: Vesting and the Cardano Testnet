@@ -54,3 +54,37 @@ Where Interval is:- have Constructors => ivFrom :: LowerBound a ->The lower boun
 15) lowerBound
 16) strictLowerBound
 17) strictUpperBound
+
+## Vesting Contract
+ Imagine you want to make a gift of ADA to a child. You want the child to own the ADA, 
+ however you only want the child to have access to the ADA when he or she gets to a specified age.
+ 
+ the datum being passed with two pieces of information; the beneficiary and the deadline:
+ 
+ on-chain part
+ 1) We defined the datum as dat and context as ctx. 
+ 2) We then check the correct beneficiary by creating the signedByBeneficiary function 
+    and the deadline by the deadlineReached function on mkvalidator.
+ 3) Followed by the boilerplate code for the validator, hash, and address:
+ 
+ in off-chain part
+ give function
+ => mustPayToTheScript datum or ()
+ => submitTxConstraints typedValidator tx
+ grab function
+ => isSuitable function chackes if pkh=benficary and deadline reached
+ => Constraints.otherScript validator
+ 
+ ## Parameterized Contract
+ we will be passing a parameter instead of a datum.
+ 1) added addtional input for mkvalidator function
+ 2) Modifying the compilation:-($$(PlutusTx.compile [|| mkValidator ||]) `PlutusTx.applyCode` PlutusTx.liftCode p)
+ 3) Followed by the boilerplate code for the validator, hash, and address:
+ 
+ Followed by the off-chain code:
+ give function
+ => mustPayToTheScript datum or ()
+ => submitTxConstraints (typedValidator p) tx
+ grab function
+ => take deadline as argument and check it with now
+ => Constraints.otherScript (validator p)
