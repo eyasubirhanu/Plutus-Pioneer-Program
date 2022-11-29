@@ -88,3 +88,20 @@ Where Interval is:- have Constructors => ivFrom :: LowerBound a ->The lower boun
  grab function
  => take deadline as argument and check it with now
  => Constraints.otherScript (validator p)
+ 
+ 
+ Homework Part 1
+ -- This should validate if either beneficiary1 has signed the transaction and
+ the current slot is before or at the deadline
+ -- or if beneficiary2 has signed the transaction and the deadline has passed.
+ 
+ We check both conditions, one where the beneficiary1 signs and 
+ it is before or at the deadline, and also where beneficiary2 signs and
+ it is after the deadline. Otherwise all else returns false.
+ 
+ Homework Part 2
+ The second part of the homework, we need to write the validator function for 
+ the vesting contract in which we instead pass pubkeyhash as the parameter, and POSIXTime as the datum.
+
+
+ 
