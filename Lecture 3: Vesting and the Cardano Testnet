@@ -1,1 +1,24 @@
 This lecture will also explore the Cardano Testnet
+1)Script Context
+data ScriptContext:- have to constractors
+  1)ScriptContextTxInfo :: TxInfo
+                 TxInfo constractors :- 
+                 A pending transaction. This is the view as seen by validator scripts,
+                 so some details are stripped out
+                                    txInfoInputs :: [TxInInfo] => Transaction inputs
+                                    txInfoOutputs :: [TxOut] => Transaction outputs
+                                    txInfoFee :: Value => The fee paid by this transaction.
+                                    txInfoMint :: Value => The Value minted by this transaction.
+                                    txInfoDCert :: [DCert] => Digests of certificates included in this transaction
+                                    txInfoWdrl :: [(StakingCredential, Integer)] => Withdrawals
+                                    txInfoValidRange :: POSIXTimeRange => The valid range for the transaction.
+                                    txInfoSignatories :: [PubKeyHash] => Signatures provided with the transaction,
+                                                                         attested that they all signed the tx
+                                    txInfoData :: [(DatumHash, Datum)]
+                                    txInfoId :: TxId  Hash of the pending transaction (excluding witnesses)
+                                    
+  2)ScriptContextPurpose ::ScriptPurpose :- Purpose of the script that is currently running:-
+                                          Minting CurrencySymbol,
+                                          Spending TxOutRef,
+                                          Rewarding StakingCredential,
+                                          Certifying DCert
