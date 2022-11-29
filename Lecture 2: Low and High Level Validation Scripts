@@ -1,1 +1,40 @@
 ## Low Level Untyped Validation Scripts
+
+@There are three pieces of data that a Plutus script recieves:
+1. The datum sitting at the UTxO
+2. The redeemer coming from the input and validation
+3. The context of the transaction being validated from its I/O
+
+These three pieces of data need to be represented by a Haskell data type. Looking at the low level implementation, 
+the same data type will be used for all three pieces of data. 
+
+## Prelude PlutusTx week02.Burn > :i Data
+Output:
+type Data :: *
+data Data
+  = Constr Integer [Data]
+  | Map [(Data, Data)]
+  | List [Data]
+  | I Integer
+  | B bytestring
+  
+  
+We can now use this extension (-XOverloadedStrings) in order to use literal strings 
+for other string-like types. One example is the Byte string type.
+
+Gift.hs example
+on-chain part
+4-main functions
+1) mkvalidator function:- define validation logic(make validator script).
+2) validator function:- complie mkvalidator haskell function to plutus core.
+  That result is what then turns into the validator. 
+  We compiled our mkValidator function and turned it into Plutus Core.
+3) valHash function:- store the hash of validator.
+4) scrAddress function:- store the address of script.
+
+off-chain part
+
+1) GiftSchema :- give and grap endpoints
+2) give function :- give using valhash function => mustPayToOtherScript valHash() $ Ada.lovelaceValueOf amount 
+4) grap function :- grap using scrAddress function => utxos <- utxosAt scrAddress
+5) endpoints function :- using GiftSchema give take input but not for grap 
