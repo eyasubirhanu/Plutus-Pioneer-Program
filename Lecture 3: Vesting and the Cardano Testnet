@@ -35,3 +35,22 @@ Where Interval is:- have Constructors => ivFrom :: LowerBound a ->The lower boun
                     Where Lower Bound is: have Constructors => LowerBound (Extended a) Closure
                                         Where Closure is:  Whether a bound is inclusive or not.
                                         Where Extended is: A set extended with a positive and negative infinity.
+
+* Some useful functions for defining bounds:
+1) after :- Check if a value is later than the end of a Interval.
+2) before :- Check if a value is earlier than the beginning of an Interval.
+3) isEmpty :- Check if an Interval is empty.
+4) hull :- 'hull a b' is the smallest interval containing a and b.
+5) intersection :- 'intersection a b' is the largest interval that is contained in a and in b, if it exists.
+6) overlaps :- Check whether two intervals overlap, that is, whether there is a value that is a member of both intervals.
+7) member :- Check whether a value is in an interval.
+8) never :- An Interval that is empty.
+9) always :- An Interval that covers every slot.
+10) to :- to a is an Interval that includes all values that are smaller than or equal to a.
+11) from :- from a is an Interval that includes all values that are greater than or equal to a.
+12) singleton :- 
+13) interval :- interval a b includes all values that are greater than or equal to a and smaller than or equal to b. 
+14) upperBound
+15) lowerBound
+16) strictLowerBound
+17) strictUpperBound
