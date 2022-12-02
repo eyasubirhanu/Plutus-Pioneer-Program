@@ -156,3 +156,5 @@ Monad
 (=<<) :: Monad m => (a -> m b) -> m a -> m b
 (>>) :: Monad m => m a -> m b -> m b
 return :: Monad m => a -> m a
+
+## The Emulator Trace Monad
