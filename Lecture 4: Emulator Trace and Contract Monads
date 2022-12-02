@@ -10,7 +10,7 @@ Output:
 Hello
 World
 
-(>>=) Bind Operator:
+(>>=) Bind Operator: Not ignore the result of the 1st but it pluged it
 (>>=) :: Monad m => m a -> (a -> m b) -> m b
 main :: IO ()
 main = bar -- putStrLn "Hello, world!"
